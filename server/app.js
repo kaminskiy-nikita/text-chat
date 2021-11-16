@@ -60,7 +60,6 @@ io.on('connection', (socket) => {
     }
     
     const users = chatData.rooms[roomIndex].users;
-    console.log(users);
     socket.to(roomId).emit('ROOM:SET_USERS', { users, roomId });
   });
 
