@@ -60,6 +60,7 @@ io.on('connection', (socket) => {
     }
     
     const users = chatData.rooms[roomIndex].users;
+    console.log(users);
     socket.to(roomId).emit('ROOM:SET_USERS', { users, roomId });
   });
 
@@ -79,7 +80,6 @@ io.on('connection', (socket) => {
     chatData.rooms[roomIndex].users = chatData.rooms[roomIndex].users.filter(user => user.id !== socket.id);
     const users = chatData.rooms[roomIndex].users;
     socket.to(chatData.currentRoomId).emit('ROOM:SET_USERS', users);
-    console.log(users);
     console.log('user disconnected', socket.id);
   });
 
